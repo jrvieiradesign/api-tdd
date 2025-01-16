@@ -5,9 +5,14 @@ export default interface CompanyRepository {
     saveCompany(company: Company): Promise<void>;
     updateCompany(company: Company): Promise<void>;
     getCompany(company: Company): Promise<void>;
+    existsByCNPJ(cnpj: string): Promise<any>;
 }
 
 export class CompanyRepositoryDatabase implements CompanyRepository {
+    async existsByCNPJ(cnpj: string): Promise<any> {
+        throw new Error("Method not implemented.");
+    }
+
     async getCompany(company: Company): Promise<void> {
         throw new Error("Method not implemented.");
     }
