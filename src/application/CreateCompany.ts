@@ -1,7 +1,7 @@
 import Company from "../domain/Company";
 import CompanyRepository from "../infra/repository/CompanyRepository";
 
-export default class createCompany {
+export default class CreateCompany {
 
     constructor(readonly companyRepository: CompanyRepository) {
     }
