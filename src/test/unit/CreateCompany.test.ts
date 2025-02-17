@@ -1,6 +1,5 @@
 import createCompany from "../../application/CreateCompany";
 import CompanyRepository from "../../infra/repository/CompanyRepository";
-import Company from "../../domain/Company";
 import Email from "../../domain/Email";
 
 describe("CreateCompany Unit Tests", () => {
