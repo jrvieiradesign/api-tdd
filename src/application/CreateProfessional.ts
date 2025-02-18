@@ -7,7 +7,7 @@ export default class CreateProfessional {
     }
 
     async execute(input: Input) {
-        const professional = new Professional(input.professionalId, input.name, input.email, input. position, input.salary)
+        const professional = new Professional(input.professionalId, input.name, input.email, input.position, input.salary)
 
         await this.professionalRepository.saveProfessional(professional)
 
