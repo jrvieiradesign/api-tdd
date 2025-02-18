@@ -13,6 +13,10 @@ export default class Company {
         if (!this.isValidCNPJ(cnpj)) throw new Error("CNPJ inválido");
     }
 
+    getEmail () {
+        return this.email.getValue()
+    }
+    
     private isValidCNPJ(cnpj: string): boolean {
         const cnpjRegex = /^\d{14}$/;
         return cnpjRegex.test(cnpj);
