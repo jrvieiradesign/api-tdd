@@ -12,7 +12,7 @@ export default class CreateWork {
      }
 }
 
-interface Input {
+type Input = {
     description: string,
     dateInit: string,
     dateEnd: string,

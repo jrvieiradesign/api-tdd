@@ -16,7 +16,7 @@ export default class CreateCompany {
     }
 }
 
-interface Input {
+type Input = {
   companyId: string,
   name: string,
   cnpj: string,

@@ -14,7 +14,7 @@ export default class CreateProfessional {
     }
 
 }
-interface Input {
+type Input = {
     professionalId: string,
     name: string,
     email: string,
