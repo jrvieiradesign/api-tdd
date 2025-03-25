@@ -1,10 +1,13 @@
 import express from "express"
-import router from "../routes/companyRoutes";
+import companyRoutes from "../routes/companyRoutes";
+import professionalRoutes from "../routes/professionalRoutes";
+import workRoutes from "../routes/workRoutes";
 
 const app = express()
-
 app.use(express.json())
 
-app.use("/company", router)
+app.use("/company", companyRoutes)
+app.use("/professional", professionalRoutes)
+app.use("/work", workRoutes)
 
 export default app;
