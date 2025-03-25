@@ -11,13 +11,13 @@ export default class CreateCompany {
         if (existsCnpj) {
           throw new Error("CNPJ já está cadastrado");
         }
-        const company = new Company(input.companyId, input.name, input.cnpj, input.email, input.endereco)
+        const company = Company.create(input.name, input.cnpj, input.email, input.endereco)
+
         await this.companyRepository.saveCompany(company)
     }
 }
 
 type Input = {
-  companyId: string,
   name: string,
   cnpj: string,
   email: string,
