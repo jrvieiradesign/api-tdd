@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import Email from "./Email";
 
 export default class Company {
@@ -15,6 +16,11 @@ export default class Company {
 
     getEmail () {
         return this.email.getValue()
+    }
+
+    static create (name: string, cnpj: string, email: string, endereco: string) {
+        const companyId = crypto.randomUUID();
+        return new Company(companyId, name, cnpj, email, endereco)
     }
     
     private isValidCNPJ(cnpj: string): boolean {
