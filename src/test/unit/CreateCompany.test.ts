@@ -20,7 +20,6 @@ describe("CreateCompany Unit Tests", () => {
     it("deve salvar uma empresa com sucesso", async () => {
 
         const input = {
-            companyId: "1",
             name: "Empresa Teste",
             cnpj: "12345678000100",
             email: "empresa@teste.com",
@@ -32,7 +31,6 @@ describe("CreateCompany Unit Tests", () => {
         expect(companyRepository.existsByCNPJ).toHaveBeenCalledWith(input.cnpj)
         expect(companyRepository.saveCompany).toHaveBeenCalledWith(
             expect.objectContaining({
-                companyId: input.companyId,
                 name: input.name,
                 cnpj: input.cnpj,
                 email: new Email(input.email),
@@ -44,7 +42,6 @@ describe("CreateCompany Unit Tests", () => {
     it("deve lançar um erro ao salvar com CNPJ inválido", async () => {
     
         const input = {
-            companyId: "1",
             name: "Empresa Teste",
             cnpj: "invalido",
             email: "empresa@teste.com",
@@ -56,7 +53,6 @@ describe("CreateCompany Unit Tests", () => {
 
     it("deve lançar um erro ao salvar uma empresa com nome inválido", async () => {
         const input = {
-            companyId: "1",
             name: "",
             cnpj: "12345678000100",
             email: "empresa@teste.com",
@@ -69,7 +65,6 @@ describe("CreateCompany Unit Tests", () => {
 
     it("deve lançar erro ao salvar um email inválido", async () => {
         const input = {
-            companyId: "1",
             name: "Sul Service Eng",
             cnpj: "12345678000100",
             email: "empresateste.com",
@@ -82,7 +77,6 @@ describe("CreateCompany Unit Tests", () => {
 
     it("deve lançar erro ao salvar empresa com endereco vazio", async () => {
         const input = {
-            companyId: "1",
             name: "Sul Service Eng",
             cnpj: "12345678000100",
             email: "empresa@teste.com",
@@ -96,7 +90,6 @@ describe("CreateCompany Unit Tests", () => {
         companyRepository.existsByCNPJ.mockResolvedValue(true);
 
         const input = {
-            companyId: "1",
             name: "Sul Service Eng",
             cnpj: "12345678000100",
             email: "empresa@teste.com",
@@ -109,7 +102,7 @@ describe("CreateCompany Unit Tests", () => {
 
         expect(companyRepository.saveCompany).not.toHaveBeenCalled()
     })
-
+    
 });
 
 

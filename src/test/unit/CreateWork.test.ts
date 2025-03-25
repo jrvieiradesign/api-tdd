@@ -23,7 +23,8 @@ describe('CreateWork Unit Tests', () => {
              dateInit: '11-07-2025',   
              dateEnd: '11-12-2025',  
              typeContract: 'TEMPORARIO',
-             time: 'DIA'
+             time: 'DIA',
+             companyId: '0000000000000'
         }
 
         await createWorkUseCase.execute(input)
