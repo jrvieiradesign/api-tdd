@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./create.sql:/docker-entrypoint-initdb.d/create.sql
+    networks:
+      - app-network
+
+  backend:
+    build: ./back-end
+    ports:
+    - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/mydb
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./back-end:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  frontend:
+    build: ./front-end
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./front-end:/app
+      - /app/node_modules
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
