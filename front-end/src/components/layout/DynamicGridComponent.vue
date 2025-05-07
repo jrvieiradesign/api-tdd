@@ -10,7 +10,7 @@ const props = defineProps({
   totalList: { type: Number, required: true },
   limit: { type: Number, required: true },
 });
-
+// eslint-disable-next-line
 const dynamicGridContainer = ref<HTMLDivElement | any>(null);
 
 const emit = defineEmits<{
@@ -25,14 +25,14 @@ watch(
   },
 );
 
-const onScroll = () => {
+const onScroll = (): void => {
   const container = dynamicGridContainer.value;
   const viewPortBottom =
     container.scrollTop + container.clientHeight >= container.scrollHeight - 10;
   if (!props.loading && viewPortBottom) emit('loadMore');
 };
 
-const scrollForTop = () => {
+const scrollForTop = (): void => {
   if (dynamicGridContainer.value) {
     dynamicGridContainer.value.scrollTo({ top: 0, behavior: 'auto' });
   }
