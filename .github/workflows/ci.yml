@@ -20,9 +20,13 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar Docker Compose
+      - name: Execução CI back-end
         run: |
           docker compose -f back-end/docker-compose.ci.yml up --build --abort-on-container-exit
+
+      - name: Execução CI front-end
+        run: |
+          docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
 
       - name: Ver logs do container
         if: failure()
