@@ -1,0 +1,40 @@
+services:
+  api:
+    build: ./back-end
+    container_name: api
+    env_file: ./back-end/.env.test
+    command: npm run dev
+    depends_on:
+      - db-test   
+    networks:
+      - test-network
+
+  api-test:
+    build:
+      context: ./back-end
+      dockerfile: test-runner/Dockerfile.test
+    container_name: api-test
+    env_file: ./back-end/.env.test
+    depends_on:
+      - api
+      - db-test
+    entrypoint: ["bash", "-c", "./wait-for-it.sh api 3000 -- npm run test"]
+    networks:
+      - test-network
+
+  db-test:
+    image: postgres
+    container_name: db-test
+    env_file: ./back-end/.env.db
+    environment:
+      POSTGRES_DB: mydb_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ./create.test.sql:/docker-entrypoint-initdb.d/create.test.sql
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
