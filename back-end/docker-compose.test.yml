@@ -1,8 +1,8 @@
 services:
   api:
-    build: ./back-end
+    build: ./
     container_name: api
-    env_file: ./back-end/.env.test
+    env_file: ./.env.test
     command: npm run dev
     ports:
       - "3004:3000"
@@ -13,26 +13,26 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"      
     volumes:
-      - ./back-end:/app
+      - ./:/app
       - /app/node_modules
 
   api-test:
     build:
-      context: ./back-end
+      context: ./
       dockerfile: test-runner/Dockerfile.test
     container_name: api-test
-    env_file: ./back-end/.env.test
+    env_file: ./.env.test
     depends_on:
       - api
       - db-test
     environment:
       CHOKIDAR_USEPOLLING: "true"
     volumes:
-      - ./back-end/src/test:/app/src/test
-      - ./back-end/src/application:/app/src/application
-      - ./back-end/src/domain:/app/src/domain
-      - ./back-end/src/infra:/app/src/infra
-      - ./back-end/src/utils:/app/src/utils
+      - ./src/test:/app/src/test
+      - ./src/application:/app/src/application
+      - ./src/domain:/app/src/domain
+      - ./src/infra:/app/src/infra
+      - ./src/utils:/app/src/utils
     entrypoint: ["bash", "-c", "./wait-for-it.sh api 3000 -- npm run test"]
     networks:
       - test-network
@@ -40,7 +40,7 @@ services:
   db-test:
     image: postgres
     container_name: db-test
-    env_file: ./back-end/.env.db
+    env_file: ./.env.db
     environment:
       POSTGRES_DB: mydb_test
     ports:
