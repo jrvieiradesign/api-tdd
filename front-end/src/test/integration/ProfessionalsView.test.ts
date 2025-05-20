@@ -149,7 +149,7 @@ test('Deve renderizar todos os cards', async () => {
   await flushPromises();
   const cards = wrapper.findAllComponents({ name: 'ProfessionalCardComponent' });
 
-  expect(cards.length).toBe(8);
+  expect(cards.length).toBe(10);
 });
 
 test('Deve renderizar com paginação', async () => {
