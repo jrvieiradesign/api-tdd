@@ -1,6 +1,4 @@
-# .github/workflows/ci.yml
-
-name: CI - Testes Automáticos
+name: CI - back-end tests
 
 on:
   push:
@@ -10,7 +8,9 @@ on:
   pull_request:
     paths:
       - 'back-end/**'
-    branches: [master]
+    branches: 
+      - develop
+      - master
 
 jobs:
   tests:

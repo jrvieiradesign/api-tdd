@@ -1,6 +1,4 @@
-# .github/workflows/ci.yml
-
-name: CI - Testes Automáticos
+name: CI - front-end tests
 
 on:
   push:
@@ -10,13 +8,13 @@ on:
   pull_request:
     paths:
       - 'front-end/**'
-    branches: [master]
+    branches: 
+      - develop
+      - master
 
 jobs:
   tests:
     runs-on: ubuntu-latest
-
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
