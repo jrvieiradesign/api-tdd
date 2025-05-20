@@ -1,4 +1,4 @@
-name: CI - front-end tests
+name: CI frontend tests
 
 on:
   push:
@@ -13,7 +13,8 @@ on:
       - master
 
 jobs:
-  front-end-tests:
+  frontend_tests:
+    name: Frontend CI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
