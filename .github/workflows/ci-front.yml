@@ -1,0 +1,30 @@
+# .github/workflows/ci.yml
+
+name: CI - Testes Automáticos
+
+on:
+  push:
+    paths:
+      - 'front-end/**'
+    branches: [develop]
+  pull_request:
+    paths:
+      - 'front-end/**'
+    branches: [master]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Execução CI front-end
+        run: |
+          docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
+
+      - name: Ver logs do container
+        if: failure()
+        run: docker compose logs
