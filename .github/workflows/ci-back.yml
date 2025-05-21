@@ -2,8 +2,6 @@ name: CI - backend tests
 
 on:
   # push:
-  #   paths:
-  #     - 'back-end/**'
   #   branches: [develop]
   pull_request:
     branches: 
