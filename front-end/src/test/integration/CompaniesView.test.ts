@@ -166,7 +166,7 @@ test('Deve renderizar com paginação', async () => {
   });
 
   cards = wrapper.findAllComponents({ name: 'CompanyCardComponent' });
-  expect(cards).toHaveLength(8);
+  expect(cards).toHaveLength(10);
 });
 
 test('Deve filtrar por palavra chave', async () => {
