@@ -1,4 +1,4 @@
-name: CI - back-end tests
+name: CI - backend tests
 
 on:
   push:
@@ -13,9 +13,9 @@ on:
       - master
 
 jobs:
-  back-end-tests:
+  backend_tests:
+    name: Backend CI
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
