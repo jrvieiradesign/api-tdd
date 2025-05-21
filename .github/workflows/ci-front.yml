@@ -1,13 +1,11 @@
 name: CI - frontend tests
 
 on:
-  push:
-    paths:
-      - 'front-end/**'
-    branches: [develop]
+  # push:
+  #   paths:
+  #     - 'front-end/**'
+  #   branches: [develop]
   pull_request:
-    paths:
-      - 'front-end/**'
     branches: 
       - develop
       - master
@@ -19,8 +17,26 @@ jobs:
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verificar se houve mudanças no front-end
+        id: changes
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^front-end/' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "run_ci=false" >> $GITHUB_OUTPUT
+          else
+            echo "run_ci=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Ignorar CI - nenhuma mudança no front-end
+        if: steps.changes.outputs.run_ci == 'false'
+        run: echo "Nenhuma mudança no front-end. Pulando execução do CI."
 
       - name: Execução CI front-end
+        if: steps.changes.outputs.run_ci == 'true'
         run: |
           docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
 
