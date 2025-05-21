@@ -33,6 +33,7 @@ jobs:
         run: echo "Nenhuma mudança no back-end. Pulando execução do CI."
 
       - name: Execução CI back-end
+        if: steps.changes.outputs.run_ci == 'true'
         env: 
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
