@@ -19,6 +19,20 @@ jobs:
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
+
+      - name: Verificar se houve mudanças no back-end
+        id: changes
+        run: |
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^back-end/' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "run_ci=false" >> $GITHUB_OUTPUT
+          else
+            echo "run_ci=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Ignorar CI - nenhuma mudança no back-end
+        if: steps.changes.outputs.run_ci == 'false'
+        run: echo "Nenhuma mudança no back-end. Pulando execução do CI."
       
       - name: Execução CI back-end
         env: 
