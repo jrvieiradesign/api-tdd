@@ -2,6 +2,8 @@ name: CD - frontend deploy homolog
 
 on:
   push:
+    paths:
+      - 'front-end/**'
     branches:
       - develop
       
