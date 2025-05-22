@@ -1,4 +1,4 @@
-name: CI - frontend tests
+name: CI - frontend tests pull
 
 on:
   pull_request:
@@ -7,8 +7,8 @@ on:
       - main
 
 jobs:
-  frontend_tests:
-    name: Frontend CI
+  frontend_tests_pull:
+    name: Frontend CI pull
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
