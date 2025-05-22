@@ -1,9 +1,9 @@
 name: CD - backend deploy homolog
 
 on:
-  pull_request:
+  pull_request_target:
     types:
-      - closed
+      - closed:
     # paths:
     #   - 'back-end/**'
     branches: 
