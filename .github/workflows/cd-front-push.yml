@@ -1,6 +1,7 @@
 name: CD - frontend deploy homolog
 
-pull_request:
+on:
+  pull_request:
     types:
       - closed
     # paths:
