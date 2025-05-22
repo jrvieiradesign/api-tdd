@@ -3,8 +3,8 @@ name: CD - frontend deploy homolog
 pull_request:
     types:
       - closed
-    paths:
-      - 'front-end/**'
+    # paths:
+    #   - 'front-end/**'
     branches: 
       - develop
 
