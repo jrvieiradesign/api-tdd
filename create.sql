@@ -6,7 +6,6 @@ create table company (
     endereco text
 );
 
-
 create table work (
     work_id uuid primary key,
 	description text,
@@ -29,21 +28,6 @@ create table professional (
 	position text,
 	salary numeric
 );
-
--- INSERT INTO company (company_id, name, cnpj, email, endereco) VALUES 
--- ('f1c25484-daa2-4df1-a10b-24fc491edfb1', 'Indústria do Aço', '12345678000101', 'contato@aco.com', 'Rua Industrial 123 - São Paulo SP'),
--- ('e4f819c0-4e2e-41ec-b5e5-3c22d7cf810e', 'Metalúrgica Brasil', '22345678000102', 'contato@metalbr.com', 'Av. das Indústrias 500 - Contagem MG'),
--- ('b3d3cc16-14a9-42f2-babc-772f1ab62f7f', 'Ferro Forte Ltda', '32345678000103', 'vendas@ferroforte.com.br', 'Rua do Aço 45 - Curitiba PR'),
--- ('bd442ac2-601e-44bc-a0e2-6b60de3e09c8', 'Aço Minas', '42345678000104', 'suporte@acominas.com.br', 'Av. Tiradentes 800 - Belo Horizonte MG'),
--- ('3a6e86c7-b540-4689-a765-12ed62a2f77c', 'Companhia do Ferro', '52345678000105', 'contato@compferro.com', 'Rua do Ferro 98 - Campinas SP'),
--- ('98ff71aa-dc93-4c7c-a3f7-d420f1a4ab67', 'Inox Brasil', '62345678000106', 'relacionamento@inoxbr.com', 'Rua das Máquinas 400 - Joinville SC'),
--- ('d2489862-57de-4dd1-86e8-536fc9fc92b0', 'Metal Total', '72345678000107', 'atendimento@metaltotal.com', 'Alameda Industrial 77 - Caxias do Sul RS'),
--- ('5f5c1036-3a9b-4d69-99cb-9405a47880ae', 'Aço Forte', '82345678000108', 'comercial@aco-forte.com', 'Rod. BR-101 Km 200 - Recife PE'),
--- ('d1c57a15-5a11-45ad-bbde-f3ef9ff2b4e1', 'Indústria Nord', '92345678000109', 'info@nordindustria.com', 'Rua Norte 12 - Natal RN'),
--- ('c4dbbe02-cdb1-4a8d-8a28-f29591ef5de6', 'Ferro e Cia', '10345678000110', 'ferro@ferroecia.com', 'Rua do Comércio 789 - Porto Alegre RS'),
--- ('09b1512c-7a4b-417a-850e-c53c31ac3c3f', 'MegaMetal', '11345678000111', 'contato@megametal.com', 'Av. Industrial 1590 - São José dos Campos SP'),
--- ('6f8ec3cb-8ae2-4033-9a20-860f8d0bb08b', 'Brasil Inox', '12345678000112', 'contato@brasilinox.com', 'Rua Central 100 - Salvador BA');
--- ('f315bce3-36c1-4db6-a1b3-37cde293af6c', 'Ferro Real Ltda', '13345678000113', 'ferro@ferroreal.com', 'Av. Real 88 - Goiânia GO');
 
 INSERT INTO company (company_id, name, cnpj, email, endereco) VALUES
 ('e90f1f10-0001-4f10-aaaa-000000000001', 'Industria do Aco', '12345678000101', 'contato@aco.com', 'Rua Industrial 123 - Sao Paulo SP'),
@@ -79,6 +63,21 @@ INSERT INTO professional (professional_id, name, email, position, salary) VALUES
 ('97b50a2d-62d1-4814-bf5e-1085cfeeb7a9', 'Fernando Junior', 'fernan@gmail.com', 'INSPETORS DE SOLDA', 20000.0),
 ('1fa491b1-0225-4c55-b88a-09c5040cb38f', 'Igor Junior', 'igr@gmail.com', 'ENGENHEIRO CIVIL', 20000.0),
 ('a99f8c5a-d44d-453c-a90c-4207355e0bcd', 'Bruno Junior', 'bruno@gmail.com', 'ENGENHEIRO CIVIL', 20000.0);
+
+-- INSERT INTO company (company_id, name, cnpj, email, endereco) VALUES 
+-- ('f1c25484-daa2-4df1-a10b-24fc491edfb1', 'Indústria do Aço', '12345678000101', 'contato@aco.com', 'Rua Industrial 123 - São Paulo SP'),
+-- ('e4f819c0-4e2e-41ec-b5e5-3c22d7cf810e', 'Metalúrgica Brasil', '22345678000102', 'contato@metalbr.com', 'Av. das Indústrias 500 - Contagem MG'),
+-- ('b3d3cc16-14a9-42f2-babc-772f1ab62f7f', 'Ferro Forte Ltda', '32345678000103', 'vendas@ferroforte.com.br', 'Rua do Aço 45 - Curitiba PR'),
+-- ('bd442ac2-601e-44bc-a0e2-6b60de3e09c8', 'Aço Minas', '42345678000104', 'suporte@acominas.com.br', 'Av. Tiradentes 800 - Belo Horizonte MG'),
+-- ('3a6e86c7-b540-4689-a765-12ed62a2f77c', 'Companhia do Ferro', '52345678000105', 'contato@compferro.com', 'Rua do Ferro 98 - Campinas SP'),
+-- ('98ff71aa-dc93-4c7c-a3f7-d420f1a4ab67', 'Inox Brasil', '62345678000106', 'relacionamento@inoxbr.com', 'Rua das Máquinas 400 - Joinville SC'),
+-- ('d2489862-57de-4dd1-86e8-536fc9fc92b0', 'Metal Total', '72345678000107', 'atendimento@metaltotal.com', 'Alameda Industrial 77 - Caxias do Sul RS'),
+-- ('5f5c1036-3a9b-4d69-99cb-9405a47880ae', 'Aço Forte', '82345678000108', 'comercial@aco-forte.com', 'Rod. BR-101 Km 200 - Recife PE'),
+-- ('d1c57a15-5a11-45ad-bbde-f3ef9ff2b4e1', 'Indústria Nord', '92345678000109', 'info@nordindustria.com', 'Rua Norte 12 - Natal RN'),
+-- ('c4dbbe02-cdb1-4a8d-8a28-f29591ef5de6', 'Ferro e Cia', '10345678000110', 'ferro@ferroecia.com', 'Rua do Comércio 789 - Porto Alegre RS'),
+-- ('09b1512c-7a4b-417a-850e-c53c31ac3c3f', 'MegaMetal', '11345678000111', 'contato@megametal.com', 'Av. Industrial 1590 - São José dos Campos SP'),
+-- ('6f8ec3cb-8ae2-4033-9a20-860f8d0bb08b', 'Brasil Inox', '12345678000112', 'contato@brasilinox.com', 'Rua Central 100 - Salvador BA');
+-- ('f315bce3-36c1-4db6-a1b3-37cde293af6c', 'Ferro Real Ltda', '13345678000113', 'ferro@ferroreal.com', 'Av. Real 88 - Goiânia GO');
 
 -- insert into professional (professional_id, name, email, position, salary) values (uuid_generate_v4(), 'Zaqueu Junior' ,'zaqueu@gmail.com', 'CALDEREIRO', 20000.0);
 -- insert into professional (professional_id, name, email, position, salary) values (uuid_generate_v4(), 'Felipe Junior' ,'felipe@gmail.com', 'PINTOR', 20000.0);
