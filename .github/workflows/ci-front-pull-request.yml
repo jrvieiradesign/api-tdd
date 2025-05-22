@@ -8,7 +8,7 @@ on:
 
 jobs:
   frontend_tests:
-    name: Frontend CI
+    name: Frontend CI pull
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
