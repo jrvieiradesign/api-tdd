@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - develop
-
+      
 jobs:
   frontend_deploy_homolog:
+    if: github.event.pull_request.merged == true
     name: Frontend CD
     runs-on: ubuntu-latest
     steps:
