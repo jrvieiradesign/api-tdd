@@ -6,6 +6,7 @@ on:
       - 'front-end/**'
     branches:
       - develop
+      - main
       
 jobs:
   frontend_deploy_homolog:

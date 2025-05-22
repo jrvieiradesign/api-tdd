@@ -6,6 +6,7 @@ on:
       - 'back-end/**'
     branches: 
       - develop
+      - main
 
 jobs:
   back_deploy_homolog:
