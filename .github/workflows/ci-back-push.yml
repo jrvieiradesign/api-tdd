@@ -1,0 +1,47 @@
+name: CI - backend tests
+
+on:
+  push:
+    paths:
+      - 'back-end/**'
+    branches: 
+      - develop
+      - master
+
+jobs:
+  back_end_tests:
+    name: Backend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+        # with:
+        #   fetch-depth: 0
+      
+      # - name: Verificar se houve mudanças no back-end
+      #   id: changes
+      #   run: |
+      #     git fetch origin ${{ github.base_ref }}
+      #     CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^back-end/' || true)
+      #     if [ -z "$CHANGED" ]; then
+      #       echo "run_ci=false" >> $GITHUB_OUTPUT
+      #     else
+      #       echo "run_ci=true" >> $GITHUB_OUTPUT
+      #     fi
+      
+      # - name: Ignorar CI - nenhuma mudança no back-end
+      #   if: steps.changes.outputs.run_ci == 'false'
+      #   run: echo "Nenhuma mudança no back-end. Pulando execução do CI."
+
+      - name: Execução CI back-end
+        # if: steps.changes.outputs.run_ci == 'true'
+        env: 
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          docker compose -f back-end/docker-compose.ci.yml up --build --abort-on-container-exit
+
+      - name: Ver logs do container
+        if: failure()
+        run: docker compose logs
