@@ -1,11 +1,10 @@
 name: CD - frontend deploy homolog
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - develop
-
+      
 jobs:
   frontend_deploy_homolog:
     if: github.event.pull_request.merged == true
