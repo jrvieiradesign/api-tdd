@@ -1,0 +1,22 @@
+name: CD - backend deploy homolog
+
+on:
+  push:
+    paths:
+      - 'back-end/**'
+    branches: 
+      - develop
+
+jobs:
+  frontend_deploy_homolog:
+    name: Backend CD 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy Homolog CI back-end
+
+      - name: Ver logs do container
+        if: failure()
+        run: docker compose logs
