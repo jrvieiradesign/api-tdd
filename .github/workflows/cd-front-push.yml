@@ -11,7 +11,7 @@ on:
 jobs:
   frontend_deploy_homolog:
     if: github.ref == 'refs/heads/develop'
-    name: Frontend CD
+    name: Frontend Homolog CD
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -20,13 +20,14 @@ jobs:
       - name: Deploy Homolog CI front-end
         run: echo "Deployando para homolog..."
 
-  back_deploy_prod:
+  frontend_deploy_prod:
     if: github.ref == 'refs/heads/main'
-    name: Backend CD 
+    name: Frontend Production CD 
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Deploy Prod CI back-end
-        run: echo "Deployando para homolog..."
+      - name: Deploy Prod CI front-end
+        run: echo "Deployando para production..."
