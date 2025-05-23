@@ -26,5 +26,5 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Deploy Prod CI back-end
+      - name: Deploy Production CI back-end
         run: echo "Deployando para production..."
