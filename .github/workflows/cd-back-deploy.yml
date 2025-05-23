@@ -1,7 +1,9 @@
 name: CD - backend deploy 
 
 on:
-  push:
+  pull_request:
+    types: 
+      - closed
     paths:
       - 'back-end/**'
     branches: 
