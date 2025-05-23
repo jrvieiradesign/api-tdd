@@ -5,10 +5,10 @@ on:
     branches:
       - develop
       - main
-    types: 
-      - closed
-    paths:
-      - 'front-end/**'
+    types: [closed]
+    merged: true
+    # paths:
+    #   - 'front-end/**'
       
 jobs:
   frontend_deploy_homolog:
