@@ -1,4 +1,4 @@
-name: CD - backend deploy homolog
+name: CD - backend deploy 
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 jobs:
   back_deploy_homolog:
     if: github.ref == 'refs/heads/develop'
-    name: Backend CD 
+    name: Backend Homolog CD 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -22,11 +22,11 @@ jobs:
 
   back_deploy_prod:
     if: github.ref == 'refs/heads/main'
-    name: Backend CD 
+    name: Backend Prod CD 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
       - name: Deploy Prod CI back-end
-        run: echo "Deployando para homolog..."
+        run: echo "Deployando para production..."
