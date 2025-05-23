@@ -1,18 +1,18 @@
 name: CD - frontend deploy 
 
 on:
-  pull_request_target:
+  pull_request:    
+    branches:
+      - develop
+      - main
     types: 
       - closed
     paths:
       - 'front-end/**'
-    branches:
-      - develop
-      - main
       
 jobs:
   frontend_deploy_homolog:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     if: github.ref == 'refs/heads/develop'
     name: Frontend Homolog CD
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
         run: echo "Deployando para homolog..."
 
   frontend_deploy_prod:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     if: github.ref == 'refs/heads/main'
     name: Frontend Production CD 
     
