@@ -12,6 +12,7 @@ on:
 
 jobs:
   back_deploy_homolog:
+    if: github.event.pull_request.merged == true
     if: github.ref == 'refs/heads/develop'
     name: Backend Homolog CD 
     runs-on: ubuntu-latest
@@ -23,6 +24,7 @@ jobs:
         run: echo "Deployando para homolog..."
 
   back_deploy_prod:
+    if: github.event.pull_request.merged == true
     if: github.ref == 'refs/heads/main'
     name: Backend Prod CD 
     runs-on: ubuntu-latest
