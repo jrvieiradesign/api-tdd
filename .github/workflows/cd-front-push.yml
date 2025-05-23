@@ -1,4 +1,4 @@
-name: CD - frontend deploy homolog
+name: CD - frontend deploy 
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       
 jobs:
   frontend_deploy_homolog:
-    # if: github.event.pull_request.merged == true
+    if: github.ref == 'refs/heads/develop'
     name: Frontend CD
     runs-on: ubuntu-latest
     steps:
@@ -20,6 +20,13 @@ jobs:
       - name: Deploy Homolog CI front-end
         run: echo "Deployando para homolog..."
 
-      - name: Ver logs do container
-        if: failure()
-        run: docker compose logs
+  back_deploy_prod:
+    if: github.ref == 'refs/heads/main'
+    name: Backend CD 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy Prod CI back-end
+        run: echo "Deployando para homolog..."
