@@ -2,10 +2,10 @@ name: CD - frontend deploy
 
 on:
   pull_request:    
+    types: [closed]
     branches:
       - develop
       - main
-    types: [closed]
     merged: true
     # paths:
     #   - 'front-end/**'
