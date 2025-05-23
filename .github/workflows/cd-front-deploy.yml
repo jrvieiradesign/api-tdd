@@ -13,7 +13,7 @@ on:
 jobs:
   frontend_deploy_homolog:
     # if: github.event.pull_request.merged == true
-    if: github.ref == 'refs/heads/develop'
+    # if: github.ref == 'refs/heads/develop'
     name: Frontend Homolog CD
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +25,7 @@ jobs:
 
   frontend_deploy_prod:
     # if: github.event.pull_request.merged == true
-    if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/main'
     name: Frontend Production CD 
     
     runs-on: ubuntu-latest
