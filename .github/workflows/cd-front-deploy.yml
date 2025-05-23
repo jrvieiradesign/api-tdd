@@ -1,6 +1,7 @@
 name: CD - frontend deploy 
 
 on:
+  push:
   pull_request:    
     branches:
       - develop
