@@ -3,8 +3,6 @@ name: CD - frontend deploy
 on:
   pull_request:    
     types: [closed]
-    paths:
-      - 'front-end/**'
       
 jobs:
   frontend_deploy_homolog:
