@@ -1,4 +1,4 @@
-name: CI - backend tests push
+name: CD - backend DEPLOY homolog
 
 on:
    push:
