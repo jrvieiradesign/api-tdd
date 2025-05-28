@@ -6,7 +6,6 @@ on:
        - 'front-end/**'
      branches: 
        - main
-
       
 jobs:
   frontend_deploy_prod:
