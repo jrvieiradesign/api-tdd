@@ -1,24 +1,17 @@
-name: CD - backend deploy 
+name: CD - backend DEPLOY Production
 
 on:
-  pull_request:    
-    types: [closed]
+  push:
+   branchs: 
+    - main
+   paths: 
+    - 'back-end/**'
 
 jobs:
-  back_deploy_homolog:
-    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/develop'
-    name: Backend Homolog CD 
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
-
-      - name: Deploy Homolog CI back-end
-        run: echo "Deployando para homolog..."
-
   back_deploy_prod:
-    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     name: Backend Prod CD 
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
