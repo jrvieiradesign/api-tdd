@@ -13,10 +13,10 @@ jobs:
     # if: github.ref == 'refs/heads/main'
     name: Frontend Production CD 
     
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout do código
+#         uses: actions/checkout@v4
 
-      - name: Deploy Prod CI front-end
-        run: echo "Deployando para production..."
+#       - name: Deploy Prod CI front-end
+#         run: echo "Deployando para production..."
