@@ -3,8 +3,6 @@ name: CD - backend deploy
 on:
   pull_request:    
     types: [closed]
-    paths:
-      - 'back-end/**'
 
 jobs:
   back_deploy_homolog:
