@@ -1,0 +1,29 @@
+# name: CD - frontend deploy 
+
+# on:
+#   pull_request:    
+#     types: [closed]
+      
+# jobs:
+#   frontend_deploy_homolog:
+#     if: github.event.pull_request.merged == true && github.ref == 'refs/heads/develop'
+#     name: Frontend Homolog CD
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout do código
+#         uses: actions/checkout@v4
+
+#       - name: Deploy Homolog CI front-end
+#         run: echo "Deployando para homolog..."
+
+#   frontend_deploy_prod:
+#     if: github.event.pull_request.merged == true && github.ref == 'refs/heads/main'
+#     name: Frontend Production CD 
+    
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout do código
+#         uses: actions/checkout@v4
+
+#       - name: Deploy Prod CI front-end
+#         run: echo "Deployando para production..."
