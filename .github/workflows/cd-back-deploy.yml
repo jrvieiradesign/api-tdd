@@ -2,7 +2,7 @@ name: CD - backend DEPLOY Production
 
 on:
   push:
-   branchs: 
+   branches: 
     - main
    paths: 
     - 'back-end/**'
