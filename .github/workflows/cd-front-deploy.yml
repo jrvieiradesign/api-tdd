@@ -2,10 +2,11 @@ name: CD - frontend DEPLOY Production
 
 on:
   push:    
-   branchs:
-    - main
-   paths: 
-    - 'front-end/**'
+     paths:
+       - 'front-end/**'
+     branches: 
+       - main
+
       
 jobs:
   frontend_deploy_prod:
