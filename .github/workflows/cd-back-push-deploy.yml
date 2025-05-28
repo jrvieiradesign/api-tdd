@@ -9,7 +9,7 @@ on:
 
 jobs:
   back_deploy_homolog:
-    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop'
     name: Backend Homolog CD 
     runs-on: ubuntu-latest
     steps:
