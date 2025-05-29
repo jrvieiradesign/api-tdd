@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           # ref: ${{ github.event.pull_request.head.sha }}
-
+      
       - name: Verificar se o arquivo existe no HEAD
         run: |
           if [ -f front-end/readme77.md ]; then
