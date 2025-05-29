@@ -6,7 +6,7 @@ on:
       - develop
       - main
     paths: 
-      - 'front-end/**'
+      - 'front-end/.js**'
 
 jobs:
   frontend_tests_pull:
