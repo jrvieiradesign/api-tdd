@@ -5,6 +5,8 @@ on:
     branches: 
       - develop
       - main
+    paths: 
+      - 'front-end/**'
 
 jobs:
   frontend_tests_pull:
@@ -15,47 +17,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        # ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: Verificar se o arquivo existe no HEAD
-        run: |
-          if [ -f front-end/readme77.md ]; then
-            echo "Arquivo AINDA existe no HEAD"
-          else
-            echo "Arquivo FOI deletado no HEAD"
-          fi
-          
-      - name: Buscar branch base da PR
-        run: |
-          git fetch origin +refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}
-          git branch -a
-
-      - name: Verificar se arquivo existe na base
-        run: |
-          git ls-tree -r origin/${{ github.base_ref }} | grep 'readme77.md' || echo "Arquivo NÃO existe na base"
-
-      - name: Mostrar mudanças da PR (inclusive arquivos deletados)
-        run: |
-          echo "Comparando HEAD com origin/${{ github.base_ref }}..."
-          git diff --name-status origin/${{ github.base_ref }}..HEAD
-
-      - name: Verificar se houve mudanças no front-end
-        id: changes
-        run: |
-          git fetch origin ${{ github.base_ref }}
-          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}..HEAD | grep '^front-end/' || true)
-          if [ -z "$CHANGED" ]; then
-            echo "run_ci=false" >> $GITHUB_OUTPUT
-          else
-            echo "run_ci=true" >> $GITHUB_OUTPUT
-          fi
-      
-      - name: Ignorar CI - nenhuma mudança no front-end
-        if: steps.changes.outputs.run_ci == 'false'
-        run: echo "Nenhuma mudança no front-end. Pulando execução do CI."
 
       - name: Execução CI front-end
-        if: steps.changes.outputs.run_ci == 'true'
         run: |
           docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
 
