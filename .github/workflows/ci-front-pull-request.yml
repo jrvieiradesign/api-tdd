@@ -19,7 +19,7 @@ jobs:
       - name: Mostrar mudanças na pasta front-end/
         run: |
           echo "Buscando a branch base..."
-          git fetch origin ${{ github.base_ref }} --depth=1
+          git fetch origin ${{ github.base_ref }}
 
           echo "Diferenças entre HEAD e origin/${{ github.base_ref }}:"
           git diff --name-status origin/${{ github.base_ref }}..HEAD
