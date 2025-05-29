@@ -1,0 +1,53 @@
+name: CI - frontend tests pull
+
+on:
+  pull_request:
+    branches: 
+      - develop
+      - main
+
+jobs:
+  frontend_tests_pull:
+    name: Frontend CI pull
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mostrar mudanças na pasta front-end/
+        run: |
+          echo "Buscando a branch base..."
+          git fetch origin ${{ github.base_ref }} --depth=1
+
+          echo "Diferenças entre HEAD e origin/${{ github.base_ref }}:"
+          git diff --name-status origin/${{ github.base_ref }}..HEAD
+
+          echo ""
+          echo "Arquivos modificados dentro de 'front-end/':"
+          git diff --name-status origin/${{ github.base_ref }}..HEAD | awk '$2 ~ /^front-end\//' || echo "Nenhuma mudança na pasta front-end/"
+
+      - name: Verificar se houve mudanças no front-end
+        id: changes
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}..HEAD | grep '^front-end/' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "run_ci=false" >> $GITHUB_OUTPUT
+          else
+            echo "run_ci=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Ignorar CI - nenhuma mudança no front-end
+        if: steps.changes.outputs.run_ci == 'false'
+        run: echo "Nenhuma mudança no front-end. Pulando execução do CI."
+
+      - name: Execução CI front-end
+        if: steps.changes.outputs.run_ci == 'true'
+        run: |
+          docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
+
+      - name: Ver logs do container
+        if: failure()
+        run: docker compose logs
