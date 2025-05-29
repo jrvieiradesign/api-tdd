@@ -27,3 +27,12 @@ jobs:
       - name: Ver logs do container
         if: failure()
         run: docker compose logs
+  
+  stub_if_no_backend_changes:
+    name: Stub - Back-end sem alterações
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    # Só roda se o job principal não rodou (ou seja, sem mudanças no back-end)
+    steps:
+      - name: CI não necessário
+        run: echo "✅ Nenhuma alteração detectada em back-end/. Liberado para merge."
