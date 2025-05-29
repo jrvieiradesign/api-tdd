@@ -15,11 +15,8 @@ jobs:
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Execução CI front-end
-        if: steps.changes.outputs.run_ci == 'true'
         run: |
           docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
 
