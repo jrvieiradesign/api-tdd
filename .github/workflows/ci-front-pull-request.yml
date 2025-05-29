@@ -2,10 +2,12 @@ name: CI - frontend tests pull
 
 on:
   pull_request:
-    branches: 
-      - develop
-      - main
-    paths: 
+    types:
+      - opened
+    branches:
+      - 'main'
+      - 'develop'
+    paths:
       - 'front-end/**'
 
 jobs:
