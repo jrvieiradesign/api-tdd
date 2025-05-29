@@ -3,7 +3,7 @@ name: CI - frontend tests pull
 on:
   pull_request:
     paths: 
-      - 'front-end/**'
+      - 'front-end/'
     branches: 
       - develop
       - main
