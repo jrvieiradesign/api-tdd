@@ -28,7 +28,6 @@ jobs:
           echo "Arquivos modificados dentro de 'front-end/':"
           git diff --name-status origin/${{ github.base_ref }}..HEAD | awk '$2 ~ /^front-end\//' || echo "Nenhuma mudança na pasta front-end/"
 
-
       - name: Verificar se houve mudanças no front-end
         id: changes
         run: |
