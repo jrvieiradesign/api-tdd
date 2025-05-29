@@ -23,7 +23,7 @@ jobs:
 
       - name: Verificar se arquivo existe na base
         run: |
-          git ls-tree -r origin/${{ github.base_ref }} | grep 'cd-back-deploy-prod.yml' || echo "Arquivo NÃO existe na base"
+          git ls-tree -r origin/${{ github.base_ref }} | grep 'readme77.md' || echo "Arquivo NÃO existe na base"
 
       - name: Mostrar mudanças da PR (inclusive arquivos deletados)
         run: |
