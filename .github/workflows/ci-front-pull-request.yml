@@ -16,6 +16,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Buscar base da PR (ex main, develop)
+        run: |
+          git fetch origin +refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}
+
+      - name: Mostrar mudanças na PR
+        run: |
+          echo "Comparando HEAD com origin/${{ github.base_ref }} (base da PR)..."
+          git diff --name-status origin/${{ github.base_ref }}..HEAD
+
+          echo ""
+          echo "Arquivos modificados dentro de 'front-end/':"
+          git diff --name-status origin/${{ github.base_ref }}..HEAD | awk '$2 ~ /^front-end\//' || echo "Nenhuma mudança na pasta front-end/"
+
       - name: Mostrar mudanças na pasta front-end/
         run: |
           echo "Buscando a branch base..."
