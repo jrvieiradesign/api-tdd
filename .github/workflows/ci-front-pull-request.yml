@@ -16,6 +16,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Mostrar mudanças na pasta front-end/
+        run: |
+          echo "Buscando a branch base..."
+          git fetch origin ${{ github.base_ref }} --depth=1
+
+          echo "Diferenças entre HEAD e origin/${{ github.base_ref }}:"
+          git diff --name-status origin/${{ github.base_ref }}..HEAD
+
+          echo ""
+          echo "Arquivos modificados dentro de 'front-end/':"
+          git diff --name-status origin/${{ github.base_ref }}..HEAD | awk '$2 ~ /^front-end\//' || echo "Nenhuma mudança na pasta front-end/"
+
       - name: Verificar se houve mudanças no front-end
         id: changes
         run: |
