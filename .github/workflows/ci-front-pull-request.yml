@@ -2,19 +2,16 @@ name: CI - frontend tests pull
 
 on:
   pull_request:
-    types:
-      - opened
-    branches:
-      - 'main'
-      - 'develop'
-    paths:
+    paths: 
       - 'front-end/**'
+    branches: 
+      - develop
+      - main
 
 jobs:
   frontend_tests_pull:
     name: Frontend CI pull
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
