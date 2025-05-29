@@ -16,6 +16,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Verificar se o arquivo existe no HEAD
+        run: |
+          if [ -f front-end/readme77.md ]; then
+            echo "Arquivo AINDA existe no HEAD"
+          else
+            echo "Arquivo FOI deletado no HEAD"
+          fi
+          
       - name: Buscar branch base da PR
         run: |
           git fetch origin +refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}
