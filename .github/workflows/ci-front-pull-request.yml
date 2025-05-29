@@ -6,7 +6,7 @@ on:
     - main
     - develop
    paths: 
-    - './**'
+    - '**'
 
 jobs:
   frontend_tests_pull:
