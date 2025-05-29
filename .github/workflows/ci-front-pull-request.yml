@@ -13,8 +13,8 @@ jobs:
   frontend_tests_pull:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
 
+      - uses: actions/checkout@v4
       - name: Executar testes front-end
         run: |
           docker compose -f front-end/docker-compose.ci.yml up --build --abort-on-container-exit
